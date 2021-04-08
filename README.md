@@ -4,7 +4,7 @@
 
 ## 使用方法
 
-1. 运行docker
+1. 运行docker，mac地址自己替换下，随机生成或者用自己的物理网卡地址都可以，避免冲突
 ```shell
 docker run --name phddns --privileged -d  --mac-address 80:0C:E7:81:B0:04  olbeta/phddns
 ```
