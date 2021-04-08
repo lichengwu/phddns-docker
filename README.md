@@ -24,7 +24,6 @@ phddns status
  +--------------------------------------------------+
  |    Remote Management Address http://b.oray.com   |
  +--------------------------------------------------+
-
 ```
 4. 去 http://b.oray.com 登录绑定，密码默认admin
 
