@@ -12,7 +12,6 @@ docker exec -it phddns /bin/bash
 ```
 3. 在docker容器查看花生壳SN
 ```shell
-
 phddns status
  +--------------------------------------------------+
  |          Oray PeanutHull Linux 5.1.0             |
@@ -23,7 +22,6 @@ phddns status
  +--------------------------------------------------+
  |    Remote Management Address http://b.oray.com   |
  +--------------------------------------------------+
-
 
 ```
 4. 去http://b.oray.com登录绑定，密码默认admin
