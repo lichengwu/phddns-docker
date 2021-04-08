@@ -24,5 +24,5 @@ phddns status
  +--------------------------------------------------+
 
 ```
-4. 去http://b.oray.com登录绑定，密码默认admin
+4. 去 http://b.oray.com 登录绑定，密码默认admin
 
