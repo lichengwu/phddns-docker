@@ -26,4 +26,5 @@ phddns status
  +--------------------------------------------------+
 ```
 4. 去 http://b.oray.com 登录绑定，密码默认admin
+如遇安装问题，可以参考官方教程：https://service.oray.com/question/11630.html
 
