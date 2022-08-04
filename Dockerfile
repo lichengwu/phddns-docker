@@ -12,7 +12,8 @@ RUN sed -i 's/archive.ubuntu.com/mirrors.aliyun.com/g' /etc/apt/sources.list
 
 RUN apt-get update
 
-RUN apt-get install -y net-tools psmisc supervisor wget bash-completion # 增强补全功能
+RUN apt-get install -y net-tools psmisc wget bash-completion # 增强补全功能
+
 
 WORKDIR /tmp
 
@@ -20,10 +21,15 @@ ADD "https://down.oray.com/hsk/linux/phddns_5.2.0_amd64.deb" /tmp/phddns_5.2.0_a
 
 RUN dpkg -i /tmp/phddns_5.2.0_amd64.deb && rm /tmp/phddns_5.2.0_amd64.deb
 
-COPY supervisord.conf /etc/supervisor/conf.d/supervisord.conf
-
 RUN apt autoclean
+
+WORKDIR /opt/phddns/
+
+ADD run.sh /opt/phddns/run.sh
+
+RUN chmod +x /opt/phddns/run.sh
+
 
 EXPOSE 6060
 
-CMD ["/usr/bin/supervisord"]
+CMD ["/opt/phddns/run.sh"]
