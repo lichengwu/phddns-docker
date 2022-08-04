@@ -12,7 +12,7 @@ RUN sed -i 's/archive.ubuntu.com/mirrors.aliyun.com/g' /etc/apt/sources.list
 
 RUN apt-get update
 
-RUN apt-get install -y net-tools psmisc supervisor bash-completion # 增强补全功能
+RUN apt-get install -y net-tools psmisc supervisor wget bash-completion # 增强补全功能
 
 WORKDIR /tmp
 
