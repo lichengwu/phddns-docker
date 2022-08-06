@@ -36,7 +36,6 @@ ADD run.sh /opt/phddns/run.sh
 
 RUN chmod +x /opt/phddns/run.sh
 
-
 EXPOSE 6060
 
 CMD ["/opt/phddns/run.sh"]
