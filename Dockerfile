@@ -28,6 +28,7 @@ ADD "https://down.oray.com/hsk/linux/phddns_5.2.0_amd64.deb" /tmp/phddns_5.2.0_a
 
 RUN dpkg -i /tmp/phddns_5.2.0_amd64.deb && rm /tmp/phddns_5.2.0_amd64.deb
 
+RUN rm /etc/phtunnel.json
 
 WORKDIR /opt/phddns/
 
