@@ -8,8 +8,9 @@
 
 > mac地址自己替换下，随机生成或者用自己的物理网卡地址都可以，避免冲突
 ```shell
-docker run --name phddns --privileged -d  --mac-address AA:BB:CC:DD:EE:FF  olbeta/phddns
+docker run --name phddns -d  --mac-address AA:BB:CC:DD:EE:FF olbeta/phddns
 ```
+> 如需指定网络模式为host请添加参数 `--network=host`
 
 ### docker-compose 文件
  
@@ -23,6 +24,7 @@ services:
         container_name: phddns
         restart: always
         mac_address: AA-BB-CC-DD-EE-FF
+        # network_mode: host
 ```
 
 ## 查看 **SN**
@@ -32,11 +34,11 @@ services:
 >  可以直接运行 `docker exec -it phddns phddns status` 进行查看
 
 > 使用 *docker-compose* 的用户可以直接运行 `docker-compose logs -f phddns` 进行查看
-1. 进入docker容器
-```shell
-docker exec -it phddns /bin/bash
-```
-2. 在docker容器查看花生壳SN
+
+## 绑定账号
+
+
+
 ```shell
 phddns status
  +--------------------------------------------------+
@@ -51,7 +53,8 @@ phddns status
 ```
 
 
-3. 去 http://b.oray.com 登录绑定，密码默认admin 
+> 去 http://b.oray.com 登录绑定，密码默认admin 
+
 
 如遇安装问题，可以参考官方教程：https://service.oray.com/question/11630.html
 
