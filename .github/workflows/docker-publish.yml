@@ -15,6 +15,7 @@ on:
 env:
   # Use docker.io for Docker Hub if empty
   # REGISTRY: ghcr.io
+  REGISTRY: docker.io
   # github.repository as <account>/<repo>
   IMAGE_NAME: zctmdc/phddns
   # IMAGE_NAME: olbeta/phddns
@@ -63,7 +64,7 @@ jobs:
         id: meta
         uses: docker/metadata-action@v4
         with:
-          images: ${{ env.IMAGE_NAME }}
+          images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
 
 
       # Build and push Docker image with Buildx (don't push on PR)
