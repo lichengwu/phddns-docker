@@ -17,8 +17,8 @@ env:
   # REGISTRY: ghcr.io
   REGISTRY: docker.io
   # github.repository as <account>/<repo>
-  # IMAGE_NAME: zctmdc/phddns
   # IMAGE_NAME: ${{ github.repository_owner }}/phddns
+  # IMAGE_NAME: see: Set Docker image name
 
 jobs:
   build:
@@ -33,7 +33,6 @@ jobs:
 
     steps:
 
-    
       - name: Set Docker image name
         id: step_image_name
         run: |
@@ -41,7 +40,6 @@ jobs:
           if [[ "${owner}" == "lichengwu" ]]; then
               IMAGE_NAME="olbeta/phddns";
           else
-              
               IMAGE_NAME="${owner}/phddns";
           fi
           echo "IMAGE_NAME=${IMAGE_NAME}"
