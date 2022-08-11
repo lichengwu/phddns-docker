@@ -6,11 +6,11 @@
 
 ### docker 命令行
 
-> mac地址自己替换下，随机生成或者用自己的物理网卡地址都可以，避免冲突
+- mac地址自己替换下，随机生成或者用自己的物理网卡地址都可以，避免冲突
 ```shell
 docker run --name phddns -d  --mac-address AA:BB:CC:DD:EE:FF olbeta/phddns
 ```
-> 如需指定网络模式为host请添加参数 `--network=host`
+- 如需指定网络模式为host请添加参数 `--network=host`
 
 ### docker-compose 文件
  
@@ -29,11 +29,11 @@ services:
 
 ## 查看 **SN**
 
->  可以直接运行 `docker logs -f phddns` 进行查看 
+-  可以直接运行 `docker logs -f phddns` 进行查看 
 
->  可以直接运行 `docker exec -it phddns phddns status` 进行查看
+-  可以直接运行 `docker exec -it phddns phddns status` 进行查看
 
-> 使用 *docker-compose* 的用户可以直接运行 `docker-compose logs -f phddns` 进行查看
+- 使用 *docker-compose* 的用户可以直接运行 `docker-compose logs -f phddns` 进行查看
 
 ## 绑定账号
 
@@ -53,7 +53,7 @@ phddns status
 ```
 
 
-> 去 http://b.oray.com 登录绑定，密码默认admin 
+- 去 http://b.oray.com 登录绑定，密码默认admin 
 
 
 如遇安装问题，可以参考官方教程：https://service.oray.com/question/11630.html
