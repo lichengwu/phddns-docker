@@ -1,22 +1,41 @@
-FROM ubuntu:16.04
+FROM ubuntu
 
 ENV TZ Asia/Shanghai
+
 ENV DEBIAN_FRONTEND noninteractive
 
 ENV ORAY_HOME /usr/local/oray
-RUN mkdir -p ${ORAY_HOME}
-ADD sources.list /etc/apt/sources.list
-RUN apt update
-RUN apt install -y  wget net-tools
-RUN mkdir -p /tmp/
-ADD phddns_5_1_amd64.deb /tmp/hddns.deb
-RUN dpkg -i /tmp/hddns.deb && rm /tmp/hddns.deb
-RUN apt-get install -y supervisor
-ADD supervisord.conf /supervisord.conf
-COPY /supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 
-RUN apt autoclean
+RUN mkdir -p ${ORAY_HOME}
+
+RUN sed -i 's/archive.ubuntu.com/mirrors.aliyun.com/g' /etc/apt/sources.list
+
+RUN apt-get update
+
+# 设置时区
+RUN apt-get install -y apt-utils tzdata \
+    && cp /usr/share/zoneinfo/Asia/Shanghai /etc/localtime \
+    && echo "Asia/Shanghai" > /etc/timezone \
+    && dpkg-reconfigure -f noninteractive tzdata
+
+RUN apt-get install -y wget net-tools psmisc lsb-release bash-completion # 增强补全功能
+
+RUN apt-get autoclean
+
+WORKDIR /tmp
+
+ADD "https://down.oray.com/hsk/linux/phddns_5.2.0_amd64.deb" /tmp/phddns_5.2.0_amd64.deb
+
+RUN dpkg -i /tmp/phddns_5.2.0_amd64.deb && rm /tmp/phddns_5.2.0_amd64.deb
+
+RUN rm /etc/phtunnel.json
+
+WORKDIR /opt/phddns/
+
+ADD run.sh /opt/phddns/run.sh
+
+RUN chmod +x /opt/phddns/run.sh
 
 EXPOSE 6060
 
-CMD ["/usr/bin/supervisord"]
+CMD ["/opt/phddns/run.sh"]
