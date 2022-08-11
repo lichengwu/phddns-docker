@@ -18,7 +18,7 @@ RUN apt-get install -y apt-utils tzdata \
     && echo "Asia/Shanghai" > /etc/timezone \
     && dpkg-reconfigure -f noninteractive tzdata
 
-RUN apt-get install -y net-tools psmisc wget bash-completion # 增强补全功能
+RUN apt-get install -y wget net-tools psmisc lsb-release bash-completion # 增强补全功能
 
 RUN apt-get autoclean
 
