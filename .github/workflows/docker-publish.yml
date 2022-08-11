@@ -18,7 +18,7 @@ env:
   REGISTRY: docker.io
   # github.repository as <account>/<repo>
   # IMAGE_NAME: zctmdc/phddns
-  IMAGE_NAME: olbeta/phddns
+  # IMAGE_NAME: ${{ github.repository_owner }}/phddns
 
 jobs:
   build:
@@ -32,6 +32,22 @@ jobs:
       id-token: write
 
     steps:
+
+    
+      - name: Set Docker image name
+        id: step_image_name
+        run: |
+          owner=${{ github.repository_owner }}
+          if [[ "${owner}" == "lichengwu" ]]; then
+              IMAGE_NAME="olbeta/phddns";
+          else
+              
+              IMAGE_NAME="${owner}/phddns";
+          fi
+          echo "IMAGE_NAME=${IMAGE_NAME}"
+          echo "IMAGE_NAME=${IMAGE_NAME}" >> $GITHUB_ENV
+
+
       - name: Checkout repository
         uses: actions/checkout@v3
 
