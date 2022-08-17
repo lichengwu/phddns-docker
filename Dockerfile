@@ -8,7 +8,7 @@ ENV ORAY_HOME /usr/local/oray
 
 RUN mkdir -p ${ORAY_HOME}
 
-RUN sed -i 's/archive.ubuntu.com/mirrors.aliyun.com/g' /etc/apt/sources.list
+# RUN sed -i 's/archive.ubuntu.com/mirrors.aliyun.com/g' /etc/apt/sources.list
 
 RUN apt-get update
 

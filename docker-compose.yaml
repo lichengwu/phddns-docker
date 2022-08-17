@@ -1,0 +1,9 @@
+version: "3"
+services:
+
+    phddns:
+        image: olbeta/phddns
+        container_name: phddns
+        restart: always
+        mac_address: AA-BB-CC-DD-EE-FF
+        # network_mode: host
