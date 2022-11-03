@@ -43,11 +43,11 @@ jobs:
                       if [[ "${owner}" == "lichengwu" ]]; then
                           IMAGE_NAME="olbeta/phddns";
                       else
-                          
                           IMAGE_NAME="${owner}/phddns";
                       fi
+                  else
+                      IMAGE_NAME="${{ secrets.REGISTRY_USERNAME }}/phddns";
                   fi
-                  IMAGE_NAME="${{ secrets.REGISTRY_USERNAME }}/phddns";
                   echo "IMAGE_NAME=${IMAGE_NAME}"
                   echo "IMAGE_NAME=${IMAGE_NAME}" >> $GITHUB_OUTPUT
 
