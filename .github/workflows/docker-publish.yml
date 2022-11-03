@@ -100,6 +100,7 @@ jobs:
               with:
                   context: .
                   push: ${{ github.event_name != 'pull_request' }}
+                  load: ${{ github.event_name == 'pull_request' }}
                   tags: ${{ steps.meta.outputs.tags }}
                   labels: ${{ steps.meta.outputs.labels }}
                   cache-from: type=registry,ref=${{ steps.set_image_name.outputs.IMAGE_NAME }}:buildcache
