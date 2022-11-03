@@ -91,3 +91,15 @@ phddns status
         # ports:
         #     - 8080:11011
 ```
+
+### 自行编译
+
+1. 配置环境变量 `REGISTRY` *可选*
+    - Windows `$env:registry.your.domain`
+    - Linux `export REGISTRY=docker.io`
+2. 指定文件编译 `docker compose -f .\docker-compose.build.yaml build`
+3. 推送到镜像服务器 `docker compose -f .\docker-compose.build.yaml push` *可选*
+4. 修改 `docker-compose.yaml`
+5. 后台运行 `docker compose up -d`
+
+> 你也可以直接修改 `docker-compose.yaml` 编译运行

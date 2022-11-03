@@ -2,8 +2,9 @@ version: "3"
 services:
 
     phddns:
-        build: .
-        image: ${REGISTRY}${REGISTRY+/}olbeta/phddns
+        # build: .
+        image: olbeta/phddns
+        # image: ${REGISTRY}${REGISTRY+/}olbeta/phddns
         container_name: phddns
         restart: always
         mac_address: AA-BB-CC-DD-EE-FF
