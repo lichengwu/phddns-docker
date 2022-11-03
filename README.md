@@ -20,7 +20,7 @@ docker run --name phddns -d  --mac-address AA:BB:CC:DD:EE:FF olbeta/phddns
 
 1.创建 **docker-compose** 文件
 
-```
+```yaml
 version: "3"
 services:
 
@@ -72,6 +72,12 @@ phddns status
 ## 日志查看
 
 ### docker
+
+`docker logs -f --tail 50 phddns`
+
+### docker-compose
+
+`docker compose logs -f --tail 10 phddns`
 
 ### http
 

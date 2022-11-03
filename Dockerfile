@@ -15,7 +15,6 @@ LABEL description="${summary}" \
 
 ENV TZ Asia/Shanghai
 
-
 ENV ORAY_HOME /usr/local/oray
 RUN mkdir -p ${ORAY_HOME}
 
@@ -29,10 +28,9 @@ RUN apt-get install -y apt-utils tzdata \
     && echo "Asia/Shanghai" > /etc/timezone \
     && dpkg-reconfigure -f noninteractive tzdata
 
-RUN apt-get install -y wget curl net-tools psmisc lsb-release bash-completion # 增强补全功能
+RUN apt-get install -y wget net-tools psmisc lsb-release bash-completion # 增强补全功能
 
 RUN apt-get autoclean
-
 
 WORKDIR /tmp
 ADD "https://down.oray.com/hsk/linux/phddns_5.2.0_amd64.deb" /tmp/phddns_5.2.0_amd64.deb
@@ -47,9 +45,8 @@ RUN chmod +x /app/*.sh
 ENV LOG_HTTP_IP '127.0.0.1'
 ENV LOG_HTTP_PORT '11011'
 
-RUN    mkdir -p /var/log/phddns/
-RUN    touch /var/log/phddns/phtunnel.log
+RUN mkdir -p /var/log/phddns/
+RUN touch /var/log/phddns/phtunnel.log
 ENTRYPOINT ["/app/docker-entrypoint.sh"]
 
 CMD ["phddns", "start"]
-
