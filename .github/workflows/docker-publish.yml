@@ -39,7 +39,7 @@ jobs:
                           https://github.com/docker/login-action#docker-hub
                           https://docs.docker.com/docker-hub/access-tokens/
                       '
-                      if [[ ${{ github.event_name }} != 'pull_request' }}  ]];then
+                      if [[ "${{ github.event_name }}" != "pull_request" ]];then
                           exit 1
                       fi
                       owner=${{ github.repository_owner }}
@@ -49,7 +49,7 @@ jobs:
                           IMAGE_NAME="${owner}/phddns";
                       fi
                   else
-                      echo "现在可以移除 33-49,51行"
+                      echo "现在可以移除 36-此行，及后fi"
                       IMAGE_NAME="${{ secrets.REGISTRY_USERNAME }}/phddns";
                   fi
                   echo "IMAGE_NAME=${IMAGE_NAME}"
