@@ -75,7 +75,7 @@ jobs:
               id: meta
               uses: docker/metadata-action@v4
               with:
-                  images: ${{ env.REGISTRY }}/${{ env.REGISTRY_USERNAME }}
+                  images: ${{ env.REGISTRY }}/${{ steps.set_image_name.outputs.IMAGE_NAME }}
                   tags: |
                       type=ref,event=branch
                       type=ref,event=pr
