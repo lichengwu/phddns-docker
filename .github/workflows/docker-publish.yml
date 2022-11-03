@@ -39,6 +39,9 @@ jobs:
                           https://github.com/docker/login-action#docker-hub
                           https://docs.docker.com/docker-hub/access-tokens/
                       '
+                      if [[ ${{ github.event_name }} != 'pull_request' }}  ]];then
+                          exit 1
+                      fi
                       owner=${{ github.repository_owner }}
                       if [[ "${owner}" == "lichengwu" ]]; then
                           IMAGE_NAME="olbeta/phddns";
