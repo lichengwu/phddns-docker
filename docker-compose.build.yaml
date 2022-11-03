@@ -1,0 +1,11 @@
+version: "3"
+services:
+    phddns:
+        build: .
+        image: ${REGISTRY}${REGISTRY+/}olbeta/phddns
+        container_name: phddns
+# e.g
+# export REGISTRY=docker.io
+# $env:registry.your.domain
+# docker compose -f .\docker-compose.build.yaml build
+# docker compose -f .\docker-compose.build.yaml push
