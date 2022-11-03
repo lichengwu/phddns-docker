@@ -34,11 +34,17 @@ jobs:
               id: set_image_name
               run: |
                   if [[ -z "${{ secrets.REGISTRY_USERNAME }}" ]];then
-                    echo `
-                        请在 Settings > secrets > Actions 中添加 REGISTRY_USERNAME，REGISTRY_TOKEN
-                        https://github.com/docker/login-action#docker-hub
-                        https://docs.docker.com/docker-hub/access-tokens/
-                    `
+                      echo '
+                          请在 Settings > secrets > Actions 中添加 REGISTRY_USERNAME, REGISTRY_TOKEN
+                          https://github.com/docker/login-action#docker-hub
+                          https://docs.docker.com/docker-hub/access-tokens/
+                      '
+                      if [[ "${owner}" == "lichengwu" ]]; then
+                          IMAGE_NAME="olbeta/phddns";
+                      else
+                          
+                          IMAGE_NAME="${owner}/phddns";
+                      fi
                   fi
                   IMAGE_NAME="${{ secrets.REGISTRY_USERNAME }}/phddns";
                   echo "IMAGE_NAME=${IMAGE_NAME}"
