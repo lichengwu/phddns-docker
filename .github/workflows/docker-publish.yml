@@ -39,6 +39,7 @@ jobs:
                           https://github.com/docker/login-action#docker-hub
                           https://docs.docker.com/docker-hub/access-tokens/
                       '
+                      owner=${{ github.repository_owner }}
                       if [[ "${owner}" == "lichengwu" ]]; then
                           IMAGE_NAME="olbeta/phddns";
                       else
