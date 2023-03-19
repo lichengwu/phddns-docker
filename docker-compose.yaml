@@ -2,8 +2,15 @@ version: "3"
 services:
 
     phddns:
+        # build: .
         image: olbeta/phddns
+        # image: ${REGISTRY}${REGISTRY+/}olbeta/phddns
         container_name: phddns
         restart: always
         mac_address: AA-BB-CC-DD-EE-FF
         # network_mode: host
+        environment:
+            - LOG_HTTP_IP='0.0.0.0' # 换成你想监听的地址
+            - LOG_HTTP_PORT=11011
+        ports:
+            - 11011:11011
